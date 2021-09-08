@@ -4,7 +4,7 @@ const state = JSON.parse(json);
 const table = document.getElementById("myTable");
 const tBody = document.createElement("tbody");
 const tablePag = document.querySelectorAll('#paginator li')
-const pagination = document.querySelector('#paginator')
+const pagination = document.getElementById('paginator')
 const slicePage = arrayPage(state);
 
 
@@ -59,7 +59,7 @@ function arrayPage(page, pageSize = 5) {
     return subslice;
 }
 
-// отрисовка li для выбора страницы объектов
+// отрисовка li для выбора страницы объектов, недоделанная 
 
 tablePag.forEach((state, pageSize = 10, pagination) => {
     const paginator = document.createElement("li")
@@ -87,38 +87,25 @@ tablePag.forEach((state, pageSize = 10, pagination) => {
 const form = document.getElementById("myForm");
 form.style.cssText = 'display: none;';
 
-// форма для редактирования 
+// форма для редактирования c автозаполнением данных, недоделанная 
 var formIn = document.querySelectorAll('td');
 for (var i = 0; i < formIn.length; i++)
     formIn[i].onclick = function () {
-        id = this.innerHTML;
-        console.log(id);
+        id = this.innerText;
         form.style.cssText = 'display: block;';
         var inputName = document.getElementById("firstName");
         var inputlastName = document.getElementById("lastName");
         var inputAbout = document.getElementById("about");
         var inputEyeColor = document.getElementById("EyeColor");
-        for (let i in state){
-            if (state[i].name.firstName == id) {
+        for (let i in state) {
+            if (state[i].name.firstName =id ,state[i].name.lastName=id,state[i].about=id,state[i].eyeColor = id) {
                 inputName.value = state[i].name.firstName
-                // inputlastName.value = state[i].name.lastName
-                // inputAbout.value = state[i].about;
-                // inputEyeColor.value = state[i].eyeColor;
-            }
-            if (state[i].name.lastName == id) {
-                // inputName.value = state[i].name
                 inputlastName.value = state[i].name.lastName
-                // 
-                // 
-            }
-            if (state[i].about == id) {
                 inputAbout.value = state[i].about;
-            }
-            if (state[i].eyeColor == id){
                 inputEyeColor.value = state[i].eyeColor;
             }
-        }
-        
+        }  
+
     };
 
 

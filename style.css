@@ -33,7 +33,7 @@ td{
 
 .myTable_inner td,
 .myTable_inner th {
-    width: 150px;
+    width: 90px;
     height: 40px;
     text-align: center;
     border: 2px solid #ababab;
@@ -56,11 +56,13 @@ th.sorted[data-order="-1"]::after {
 }
 
 th.sorted[data-order="-1"]::after {
-	content: "▼"
+	content: "▼";
+    color: #85c9c9;
 }
 
 th.sorted[data-order="1"]::after {
-	content: "▲"
+	content: "▲";
+    color: #85c9c9;
 }
 
 #myForm{
@@ -92,4 +94,7 @@ th.sorted[data-order="1"]::after {
 }
 .form_inner button{
     margin: 0 0 0 20px;
+}
+.eye{
+    width: 160px;
 }
