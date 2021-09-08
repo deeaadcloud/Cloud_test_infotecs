@@ -1,0 +1,95 @@
+#myTable {
+    width: 50%;
+    
+}
+#paginator{
+    display: flex;
+    list-style: none;
+    cursor: pointer;
+    
+}
+#paginator li{
+    border: 1px solid #ababab;    
+}
+
+h2{
+    font-size: 18px;
+}
+td{
+    font: 10px arial;
+    
+    text-overflow: ellipsis;
+    height: 30px;
+    overflow: hidden;
+
+}
+.myTable_inner table {
+    border-collapse: collapse;
+}
+
+.myTable_inner th {
+    cursor: pointer;
+}
+
+.myTable_inner td,
+.myTable_inner th {
+    width: 150px;
+    height: 40px;
+    text-align: center;
+    border: 2px solid #ababab;
+    cursor: pointer;
+}
+
+.myTable_inner tbody tr:nth-child(even) {
+    background: #85c9c9;
+}
+
+th.sorted[data-order="1"],
+th.sorted[data-order="-1"] {
+    position: relative;
+}
+
+th.sorted[data-order="1"]::after,
+th.sorted[data-order="-1"]::after {
+    right: 0px;
+    position: absolute;
+}
+
+th.sorted[data-order="-1"]::after {
+	content: "▼"
+}
+
+th.sorted[data-order="1"]::after {
+	content: "▲"
+}
+
+#myForm{
+    width: 30%;
+    background-color: antiquewhite;
+    float: right;
+    display: none;
+}
+
+.colored-eye{
+    width: 50%;
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto; 
+}
+.form_inner{
+    position: absolute;
+    top:0;
+    background: #85c9c9;
+    border: 1px solid #ababab;
+    border-radius: 5px;
+    padding: 5px;
+}
+.form_inner p{
+    display: flex;
+    flex-direction: column;
+}
+.form_inner button{
+    margin: 0 0 0 20px;
+}
