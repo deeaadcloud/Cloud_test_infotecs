@@ -1,99 +1,3 @@
-// const form = document.getElementById("myForm");
-// form.style.visibility = 'hidden';
-
-// const table = document.getElementById("myTable");
-// const tBody = document.createElement("tbody");
-// //получаем данные
-// function render(json) {
-
-
-//     const Data = JSON.parse(json)
-//         tableData = document.querySelector('.main-data'),
-//         aboutTh = document.querySelector('.about'),
-//         Cards = splitArray(json);
-
-//     Data.innerHTML = '';
-
-//     Cards.forEach((state) => {
-//         const dataPage = document.createElement('tr');
-
-
-//         dataPage.setAttribute('id', state.id);
-//         dataPage.className = 'dataPage';
-//         dataPage.innerHTML =
-//             `
-//     <td class='first-name _cell' data-type='text'>${state.name.firstName}</td>
-//     <td class='last-name _cell' data-type='text'>${state.name.lastName}</td>
-//     <td class='about _cell' data-type='text'>${state.about.slice(0, (state.about / 4)) + '...'}</td>
-//     <td class='eye-color _cell' data-type='text'>${state.eyeColor}</td>`;
-//         Data.appendChild(dataPage)
-
-//     })
-// }
-// // заполняем таблицу
-// //создаю строки таблицы заполняя полученными данными
-
-
-
-
-
-// // for (let i in state) {
-
-// // }
-
-
-
-
-// for(let i in state){
-//     const row = document.createElement("tr");
-//     row.id = state[i].id;
-//     for(let j = 0; j < 4; j++){
-//         const col = document.createElement("td");
-//         if(j == 0){
-//             const text = document.createTextNode(state[i].name.firstName);
-//             col.appendChild(text);
-//         }else if(j == 1){
-//             const text = document.createTextNode(state[i].name.lastName);
-//             col.appendChild(text);
-//         }else if(j == 2){
-//             const text = document.createTextNode, $:{row.id.slice(0(state[i].about/4))+'...'};
-//             col.appendChild(text);
-//         }else if(j == 3){
-//             const text = document.createTextNode(state[i].eyeColor);
-//             col.appendChild(text);
-//         }
-//         row.appendChild(col);
-//     }
-//     tBody.appendChild(row);
-//     table.appendChild(tBody);
-// }
-
-
-// for(let j = 0; j < 4; j++){
-//     const col = document.createElement("td");
-//     if(j == 0){
-//         const text = document.createTextNode(state[i].name.firstName);
-//         col.appendChild(text);
-//     }else if(j == 1){
-//         const text = document.createTextNode(state[i].name.lastName);
-//         col.appendChild(text);
-//     }else if(j == 2){
-//         const text = document.createTextNode(state[i].about);
-//         col.appendChild(text);
-//     }else if(j == 3){
-//         const text = document.createTextNode(state[i].eyeColor);
-//         col.appendChild(text);
-//     }
-//     row.appendChild(col);
-// }
-
-
-
-
-
-
-
-
 //получаем данные и вводим необходимые переменные
 const state = JSON.parse(json);
 
@@ -157,13 +61,13 @@ function arrayPage(page, pageSize = 5) {
 
 // отрисовка li для выбора страницы объектов
 
-tablePag.forEach((state, pageSize = 10) => {
-    const pag = document.createElement("li")
+tablePag.forEach((state, pageSize = 10, pagination) => {
+    const paginator = document.createElement("li")
     pageSize = 10;
     let notesPage = Math.ceil(state.length / pageSize);
 
     for (let i = 1; i <= notesPage; i++) {
-        pag.className = 'row_page';
+        paginator.className = 'row_page';
         let li = document.createElement('li')
         li.innerHTML = i;
         pagination.appendChild(li)
@@ -181,24 +85,40 @@ tablePag.forEach((state, pageSize = 10) => {
 
 // скрытие формы
 const form = document.getElementById("myForm");
-form.style.visibility = 'hidden';
+form.style.cssText = 'display: none;';
 
 // форма для редактирования 
-var tds = document.querySelectorAll('td');
-for (var i = 0; i < tds.length; i++)
-    tds[i].onclick = function () {
-        id = this.id;
+var formIn = document.querySelectorAll('td');
+for (var i = 0; i < formIn.length; i++)
+    formIn[i].onclick = function () {
+        id = this.innerHTML;
+        console.log(id);
         form.style.cssText = 'display: block;';
         var inputName = document.getElementById("firstName");
         var inputlastName = document.getElementById("lastName");
         var inputAbout = document.getElementById("about");
         var inputEyeColor = document.getElementById("EyeColor");
-        if (state[i] == id) {
-            inputName.value = state[i].name.firstName
-            inputlastName.value = state[i].name.lastName
-            inputAbout.value = state[i].about;
-            inputEyeColor.value = state[i].eyeColor;
+        for (let i in state){
+            if (state[i].name.firstName == id) {
+                inputName.value = state[i].name.firstName
+                // inputlastName.value = state[i].name.lastName
+                // inputAbout.value = state[i].about;
+                // inputEyeColor.value = state[i].eyeColor;
+            }
+            if (state[i].name.lastName == id) {
+                // inputName.value = state[i].name
+                inputlastName.value = state[i].name.lastName
+                // 
+                // 
+            }
+            if (state[i].about == id) {
+                inputAbout.value = state[i].about;
+            }
+            if (state[i].eyeColor == id){
+                inputEyeColor.value = state[i].eyeColor;
+            }
         }
+        
     };
 
 
